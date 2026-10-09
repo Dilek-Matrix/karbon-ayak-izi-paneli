@@ -1,7 +1,7 @@
 import React from 'react';
-import { Leaf, PlusCircle, Download, RefreshCw, Server } from 'lucide-react';
+import { Leaf, PlusCircle, Download, RefreshCw, Server, Database } from 'lucide-react';
 
-export default function Header({ onOpenModal, onRefresh, loading }) {
+export default function Header({ onOpenModal, onRefresh, loading, isDemoMode }) {
   const handleExportReport = () => {
     alert("ESG Sürdürülebilirlik & Karbon Ayak İzi Raporu (PDF/CSV) indiriliyor...");
   };
@@ -28,11 +28,25 @@ export default function Header({ onOpenModal, onRefresh, loading }) {
 
         {/* API Status Badge & Action Controls */}
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs text-slate-300">
-            <Server className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-            <span>REST API:</span>
-            <span className="text-emerald-400 font-mono font-medium">localhost:3001</span>
-          </div>
+          {isDemoMode ? (
+            <div
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 shadow-sm"
+              title="Yerel REST API (localhost:3001) bağlantısı kurulamadı. Statik veri modunda çalışılıyor."
+            >
+              <Database className="w-3.5 h-3.5 text-amber-400" />
+              <span className="text-slate-400 font-medium">Durum:</span>
+              <span className="text-amber-400 font-semibold tracking-wide">Demo Modu (Statik Veri)</span>
+            </div>
+          ) : (
+            <div
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs text-slate-300"
+              title="Yerel REST API (localhost:3001) servisine bağlı."
+            >
+              <Server className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+              <span>REST API:</span>
+              <span className="text-emerald-400 font-mono font-medium">localhost:3001</span>
+            </div>
+          )}
 
           <button
             onClick={onRefresh}
@@ -65,3 +79,4 @@ export default function Header({ onOpenModal, onRefresh, loading }) {
     </header>
   );
 }
+

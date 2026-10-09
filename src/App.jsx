@@ -19,6 +19,7 @@ import {
   addActivity,
   deleteActivity,
   getTips,
+  resetApiMode,
 } from './services/api';
 
 export default function App() {
@@ -32,9 +33,13 @@ export default function App() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isDemoMode, setIsDemoMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fetchAllData = async () => {
+  const fetchAllData = async (resetMode = false) => {
+    if (resetMode) {
+      resetApiMode();
+    }
     setLoading(true);
     setError(null);
     try {
@@ -63,9 +68,21 @@ export default function App() {
       setReductionGoals(goalsRes.data);
       setActivities(activitiesRes.data);
       setTips(tipsRes.data);
+
+      const usedMock = [
+        overviewRes,
+        monthlyRes,
+        categoryRes,
+        deptRes,
+        goalsRes,
+        activitiesRes,
+        tipsRes,
+      ].some((r) => r?.isMock);
+
+      setIsDemoMode(usedMock);
     } catch (err) {
-      console.error('REST API verileri çekilirken hata oluştu:', err);
-      setError('json-server REST API servisine bağlanılamadı. Lütfen sunucunun (http://localhost:3001) çalıştığından emin olun.');
+      console.error('Veri çekilirken beklenmeyen hata:', err);
+      setIsDemoMode(true);
     } finally {
       setLoading(false);
     }
@@ -77,24 +94,28 @@ export default function App() {
 
   const handleAddActivity = async (newActivity) => {
     try {
-      await addActivity(newActivity);
-      // Re-fetch activities
-      const res = await getActivities();
-      setActivities(res.data);
+      const res = await addActivity(newActivity);
+      if (res.isMock) {
+        setIsDemoMode(true);
+      }
+      // Yenilenmiş aktiviteleri al
+      const updatedActivitiesRes = await getActivities();
+      setActivities(updatedActivitiesRes.data);
     } catch (err) {
       console.error('Aktivite eklenirken hata:', err);
-      alert('Aktivite eklenemedi!');
     }
   };
 
   const handleDeleteActivity = async (id) => {
     if (!window.confirm('Bu emisyon kaydını silmek istediğinize emin misiniz?')) return;
     try {
-      await deleteActivity(id);
-      setActivities((prev) => prev.filter((a) => a.id !== id));
+      const res = await deleteActivity(id);
+      if (res.isMock) {
+        setIsDemoMode(true);
+      }
+      setActivities((prev) => prev.filter((a) => String(a.id) !== String(id)));
     } catch (err) {
       console.error('Aktivite silinirken hata:', err);
-      alert('Aktivite silinemedi!');
     }
   };
 
@@ -103,19 +124,20 @@ export default function App() {
       {/* Navbar Header */}
       <Header
         onOpenModal={() => setIsModalOpen(true)}
-        onRefresh={fetchAllData}
+        onRefresh={() => fetchAllData(true)}
         loading={loading}
+        isDemoMode={isDemoMode}
       />
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6">
         
-        {/* Error Alert */}
+        {/* Error Alert (eğer kritik bir sorun kalırsa) */}
         {error && (
           <div className="p-4 mb-6 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs flex items-center justify-between">
             <span>{error}</span>
             <button
-              onClick={fetchAllData}
+              onClick={() => fetchAllData(true)}
               className="px-3 py-1 bg-red-500/20 hover:bg-red-500/30 font-bold rounded"
             >
               Tekrar Dene
@@ -127,7 +149,7 @@ export default function App() {
         {loading && !overview ? (
           <div className="flex flex-col items-center justify-center py-20 gap-3 text-slate-400">
             <div className="w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-xs font-medium">REST API Verileri Yükleniyor (json-server)...</p>
+            <p className="text-xs font-medium">Panel Verileri Yükleniyor...</p>
           </div>
         ) : (
           <>
@@ -180,3 +202,4 @@ export default function App() {
     </div>
   );
 }
+
