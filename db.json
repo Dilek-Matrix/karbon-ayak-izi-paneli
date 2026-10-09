@@ -1,0 +1,160 @@
+{
+  "overview": {
+    "totalEmissions": 1420.5,
+    "monthlyTarget": 1200.0,
+    "previousMonthEmissions": 1580.2,
+    "reductionPercentage": -10.1,
+    "netZeroProgress": 64,
+    "treesEquivalent": 64500,
+    "scope1": 420.8,
+    "scope2": 580.3,
+    "scope3": 419.4,
+    "unit": "t CO₂e"
+  },
+  "monthlyEmissions": [
+    { "id": "1", "month": "Ocak", "scope1": 450, "scope2": 620, "scope3": 480, "total": 1550, "target": 1400 },
+    { "id": "2", "month": "Şubat", "scope1": 440, "scope2": 610, "scope3": 460, "total": 1510, "target": 1380 },
+    { "id": "3", "month": "Mart", "scope1": 460, "scope2": 590, "scope3": 470, "total": 1520, "target": 1360 },
+    { "id": "4", "month": "Nisan", "scope1": 430, "scope2": 570, "scope3": 450, "total": 1450, "target": 1340 },
+    { "id": "5", "month": "Mayıs", "scope1": 410, "scope2": 560, "scope3": 440, "total": 1410, "target": 1320 },
+    { "id": "6", "month": "Haziran", "scope1": 430, "scope2": 580, "scope3": 430, "total": 1440, "target": 1300 },
+    { "id": "7", "month": "Temmuz", "scope1": 450, "scope2": 600, "scope3": 420, "total": 1470, "target": 1280 },
+    { "id": "8", "month": "Ağustos", "scope1": 440, "scope2": 590, "scope3": 410, "total": 1440, "target": 1260 },
+    { "id": "9", "month": "Eylül", "scope1": 420, "scope2": 580, "scope3": 400, "total": 1400, "target": 1240 },
+    { "id": "10", "month": "Ekim", "scope1": 420.8, "scope2": 580.3, "scope3": 419.4, "total": 1420.5, "target": 1200 },
+    { "id": "11", "month": "Kasım (Tahmin)", "scope1": 400, "scope2": 550, "scope3": 390, "total": 1340, "target": 1180 },
+    { "id": "12", "month": "Aralık (Tahmin)", "scope1": 380, "scope2": 530, "scope3": 380, "total": 1290, "target": 1150 }
+  ],
+  "emissionsByCategory": [
+    { "id": "1", "category": "Elektrik & Enerji", "value": 580.3, "percentage": 40.8, "color": "#10B981", "icon": "Zap" },
+    { "id": "2", "category": "Üretim & Fabrika", "value": 420.8, "percentage": 29.6, "color": "#3B82F6", "icon": "Factory" },
+    { "id": "3", "category": "Lojistik & Filo", "value": 240.5, "percentage": 16.9, "color": "#F59E0B", "icon": "Truck" },
+    { "id": "4", "category": "Tedarik Zinciri", "value": 110.4, "percentage": 7.8, "color": "#8B5CF6", "icon": "Boxes" },
+    { "id": "5", "category": "İş Seyahatleri", "value": 68.5, "percentage": 4.9, "color": "#EC4899", "icon": "Plane" }
+  ],
+  "departmentEmissions": [
+    { "id": "1", "department": "Üretim Tesisi A", "scope1": 240, "scope2": 310, "scope3": 120, "total": 670 },
+    { "id": "2", "department": "Lojistik & Depo", "scope1": 110, "scope2": 95, "scope3": 180, "total": 385 },
+    { "id": "3", "department": "Merkez Ofis", "scope1": 35, "scope2": 125, "scope3": 45, "total": 205 },
+    { "id": "4", "department": "Ar-Ge Laboratuvarı", "scope1": 25, "scope2": 40, "scope3": 30, "total": 95 },
+    { "id": "5", "department": "Saha Ekipleri", "scope1": 10.8, "scope2": 10.3, "scope3": 44.4, "total": 65.5 }
+  ],
+  "reductionGoals": [
+    {
+      "id": "1",
+      "title": "%100 Yenilenebilir Enerjiye Geçiş",
+      "targetDate": "2026-12-31",
+      "progress": 78,
+      "category": "Enerji",
+      "savedCO2e": 450,
+      "status": "Devam Ediyor"
+    },
+    {
+      "id": "2",
+      "title": "Araç Filosunun %80 EV Dönüşümü",
+      "targetDate": "2027-06-30",
+      "progress": 45,
+      "category": "Ulaşım",
+      "savedCO2e": 180,
+      "status": "Devam Ediyor"
+    },
+    {
+      "id": "3",
+      "title": "Sıfır Atık Sertifikasyonu",
+      "targetDate": "2026-11-15",
+      "progress": 92,
+      "category": "Atık",
+      "savedCO2e": 95,
+      "status": "Tamamlanmak Üzere"
+    },
+    {
+      "id": "4",
+      "title": "Tedarikçi Karbon Puanlama Sistemi",
+      "targetDate": "2027-03-31",
+      "progress": 30,
+      "category": "Tedarik Zinciri",
+      "savedCO2e": 210,
+      "status": "Planlandı"
+    }
+  ],
+  "activities": [
+    {
+      "id": "1",
+      "title": "Fabrika A Güneş Paneli Üretim Katkısı",
+      "category": "Elektrik & Enerji",
+      "scope": "Scope 2",
+      "date": "2026-10-08",
+      "quantity": 14500,
+      "unit": "kWh",
+      "co2e": -8.5,
+      "status": "Onaylandı"
+    },
+    {
+      "id": "2",
+      "title": "Kargo Sevkiyatı - Euro 6 Dizel Filo",
+      "category": "Lojistik & Filo",
+      "scope": "Scope 1",
+      "date": "2026-10-07",
+      "quantity": 1200,
+      "unit": "km",
+      "co2e": 14.2,
+      "status": "Onaylandı"
+    },
+    {
+      "id": "3",
+      "title": "Şebeke Elektriği Tüketimi (Ekim 1. Hafta)",
+      "category": "Elektrik & Enerji",
+      "scope": "Scope 2",
+      "date": "2026-10-06",
+      "quantity": 42000,
+      "unit": "kWh",
+      "co2e": 18.6,
+      "status": "Onaylandı"
+    },
+    {
+      "id": "4",
+      "title": "İstanbul - Berlin İş Uçuşu (3 Personel)",
+      "category": "İş Seyahatleri",
+      "scope": "Scope 3",
+      "date": "2026-10-04",
+      "quantity": 3,
+      "unit": "yolcu",
+      "co2e": 2.4,
+      "status": "İncelemede"
+    },
+    {
+      "id": "5",
+      "title": "Ambalaj Malzemeleri Dönüştürülmüş Karton Alımı",
+      "category": "Tedarik Zinciri",
+      "scope": "Scope 3",
+      "date": "2026-10-02",
+      "quantity": 5000,
+      "unit": "kg",
+      "co2e": 3.8,
+      "status": "Onaylandı"
+    }
+  ],
+  "tips": [
+    {
+      "id": "1",
+      "title": "HVAC İklimlendirme Zamanlayıcı Optimize Edilmeli",
+      "description": "Merkez ofis iklimlendirme saatleri mesai bitiminde otomatik kapatılacak şekilde ayarlanarak aylık ~4.2 ton CO₂e tasarruf sağlanabilir.",
+      "impact": "Yüksek",
+      "potentialSaving": "4.2 t CO₂e / ay"
+    },
+    {
+      "id": "2",
+      "title": "Lojistik Rotalarında Yapay Zekâ Destekli Birleştirme",
+      "description": "Bölgesel dağıtımlarda rota optimizasyonu kullanılarak filo yakıt tüketimi %12 azaltılabilir.",
+      "impact": "Orta",
+      "potentialSaving": "7.5 t CO₂e / ay"
+    },
+    {
+      "id": "3",
+      "title": "Yeşil Enerji Tarifesine Geçiş",
+      "description": "Tedarik edilen şebeke elektriğinde I-REC sertifikalı yenilenebilir enerji paketine geçilerek Scope 2 emisyonları sıfırlanabilir.",
+      "impact": "Çok Yüksek",
+      "potentialSaving": "580 t CO₂e / yıl"
+    }
+  ]
+}
